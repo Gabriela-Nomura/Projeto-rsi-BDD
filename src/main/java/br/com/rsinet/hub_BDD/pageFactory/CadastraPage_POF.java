@@ -8,9 +8,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import br.com.rsinet.hub_BDD.utils.constantes;
+import br.com.rsinet.hub_BDD.utils.MassaDeDados;
 
 public class CadastraPage_POF {
 
@@ -73,38 +75,38 @@ public class CadastraPage_POF {
 	private WebElement alerta;
 	
 	public String sendUserName(int i ) throws Exception {
-		nomeUsuario.sendKeys(constantes.userName(i));
+		nomeUsuario.sendKeys(MassaDeDados.userName(i));
 		Log.info("Insere o nome de usuario");
-		return constantes.userName(i);
+		return MassaDeDados.userName(i);
 	}
 
 	public void sendUserEmail() throws Exception {
-		emailUsuario.sendKeys(constantes.userEmail());
+		emailUsuario.sendKeys(MassaDeDados.userEmail());
 		Log.info("Insere o email do usuario");
 	}
 
 	public void sendUserSenha() throws Exception {
-		senhaUsuario.sendKeys(constantes.userSenha());
+		senhaUsuario.sendKeys(MassaDeDados.userSenha());
 		Log.info("Insere a senha do usuario");
 	}
 
 	public void sendUserSenhaConfirmacao() throws Exception {
-		confirmacaoSenhaUsuario.sendKeys(constantes.userSenhaConfirmacao());
+		confirmacaoSenhaUsuario.sendKeys(MassaDeDados.userSenhaConfirmacao());
 		Log.info("Insere a confirmacao de senha do usuario");
 	}
 
 	public void sendUserSPrimeiroNome() throws Exception {
-		primeiroNome.sendKeys(constantes.userPrimeiroNome());
+		primeiroNome.sendKeys(MassaDeDados.userPrimeiroNome());
 		Log.info("Insere o primeiro nome do usuario");
 	}
 
 	public void sendUserUltimoNome() throws Exception {
-		ultimoNome.sendKeys(constantes.userUltimoNome());
+		ultimoNome.sendKeys(MassaDeDados.userUltimoNome());
 		Log.info("Insere o telefone do usuario");
 	}
 
 	public void sendUserTelefone() throws Exception {
-		telefoneUsuario.sendKeys(constantes.userTelefone());
+		telefoneUsuario.sendKeys(MassaDeDados.userTelefone());
 		Log.info("Insere o telefone do usuario");
 	}
 
@@ -123,30 +125,33 @@ public class CadastraPage_POF {
 	}
 
 	public void sendUserCidade() throws Exception {
-		cidadeUsuario.sendKeys(constantes.userCidade());
+		cidadeUsuario.sendKeys(MassaDeDados.userCidade());
 		Log.info("Insere a cidade do usu�rio");
 	}
 
 	public void sendUserEndereco() throws Exception {
-		enderecoUsuario.sendKeys(constantes.userEndereco());
+		enderecoUsuario.sendKeys(MassaDeDados.userEndereco());
 		Log.info("Insere o endere�o do usu�rio");
 		
 	}
 	
 	public void sendUserEstado() throws Exception {
-		estadoUsuario.sendKeys(constantes.userEstado());
+		estadoUsuario.sendKeys(MassaDeDados.userEstado());
 		Log.info("Insere o estado do usu�rio");
 	}
 	public void sendUserCep() throws Exception {
-	cepUsuario.sendKeys(constantes.userCep());
+	cepUsuario.sendKeys(MassaDeDados.userCep());
 	Log.info("Insere o CEP do usu�rio");
 	}
 	public void aceitaTermos() {
-	aceitaTermos.click();
+	WebDriverWait wait = new WebDriverWait(driver, 15);
+	wait.until(ExpectedConditions.elementToBeClickable(aceitaTermos));
+		aceitaTermos.click();
 	Log.info("A opcao de aceitacao dos termos de privacidade foi selecionada");
 	}
 	public void registaUser() {
-		
+		WebDriverWait wait = new WebDriverWait(driver, 15);
+		wait.until(ExpectedConditions.elementToBeClickable(registraUsuario));
 		registraUsuario.click();
 		Log.info("O link para registrar um novo usu�rio recebeu um clique");
 		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);

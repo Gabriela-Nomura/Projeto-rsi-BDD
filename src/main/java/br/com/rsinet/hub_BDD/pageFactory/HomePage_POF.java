@@ -8,6 +8,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
@@ -16,7 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import br.com.rsinet.hub_BDD.managers.WebDriverManager;
 import br.com.rsinet.hub_BDD.utils.Print;
-import br.com.rsinet.hub_BDD.utils.constantes;
+import br.com.rsinet.hub_BDD.utils.MassaDeDados;
 
 public class HomePage_POF {
 
@@ -56,7 +57,7 @@ public class HomePage_POF {
 
 	public void navegaInicio() {
 
-		driver.get(constantes.URL);
+		driver.get(MassaDeDados.URL);
 	}
 
 	public void minhaConta() throws InterruptedException {
@@ -81,7 +82,7 @@ public class HomePage_POF {
 
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 15);
-			wait.until(ExpectedConditions.textToBePresentInElement(userText, constantes.userName(1)));
+			wait.until(ExpectedConditions.textToBePresentInElement(userText, MassaDeDados.userName(1)));
 		} catch (Exception e) {
 
 			return userText.isDisplayed();
@@ -97,13 +98,13 @@ public class HomePage_POF {
 	}
 
 	public void clickOn_PopularProdutos() throws InterruptedException {
-		WebDriverWait wait = new WebDriverWait(driver, 5);
-		wait.until(ExpectedConditions.elementToBeClickable(popularProdutos));
-		popularProdutos.sendKeys(Keys.ENTER);
+//		WebDriverWait wait = new WebDriverWait(driver, 5);
+//		wait.until(ExpectedConditions.elementToBeClickable(popularProdutos));
+//		popularProdutos.sendKeys(Keys.ENTER);
 
-//		 Actions acao = new Actions(driver);
-//		 acao.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
-//		 Thread.sleep(10000);
+		 Actions acao = new Actions(driver);
+		 acao.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
+		 Thread.sleep(10000);
 	}
 
 	public void takePrint() throws Exception {
@@ -129,7 +130,7 @@ public class HomePage_POF {
 		WebDriverWait wait = new WebDriverWait(driver, 15);
 		wait.until(ExpectedConditions.elementToBeClickable(buscaBox));
 		WebDriverManager.configExcelBusca();
-		buscaBox.sendKeys(constantes.buscaLupa());
+		buscaBox.sendKeys(MassaDeDados.buscaLupa());
 		buscaBox.sendKeys(Keys.ENTER);
 	}
 
@@ -139,7 +140,7 @@ public class HomePage_POF {
 
 		WebDriverManager.configExcelBusca();
 
-		buscaBox.sendKeys(constantes.buscaLupaFalha());
+		buscaBox.sendKeys(MassaDeDados.buscaLupaFalha());
 		buscaBox.sendKeys(Keys.ENTER);
 
 		Thread.sleep(20000);
@@ -155,6 +156,8 @@ public class HomePage_POF {
 	}
 
 	public void take_Print() throws Exception {
+		WebDriverWait wait = new WebDriverWait(driver, 15);
+		wait.until(ExpectedConditions.visibilityOf(produto));
 		Print.takeSnapShot("TesteBuscaLupaInvalido-MostraProduto", driver);
 
 	}

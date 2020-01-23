@@ -1,17 +1,21 @@
-Feature: Busca pelo campo de busca
-Testa o resultado obtido atrav√©s da busca pelo campo na tela inicial
+# language: pt
+#coding: UTF-8
 
-#	Scenario: Busca pela lupa valida
-#		Given que esteja na pagina inicial da aplicacao
-#		When clicar sobre a lupa
-#		And enviar um texto de busca
-#		And selecionar um dos produtos obtidos como resultado
-#		Then o produto aberto deve ser correspondente ao que recebeu o clique
-#	
-#	Scenario: Busca pela lupa invalida
-#		Given que esteja na pagina inicial da aplicacao
-#		When clicar sobre a lupa 
-#		And enviar o texto de busca 
-#		Then a busca nao retorna nenhum resultado 
-#
-#	
+Funcionalidade: Busca pelo campo de busca
+Testa o resultado obtido atraves da busca pelo campo na tela inicial
+
+	Cenario: Busca pela lupa valida
+		Dado que esteja na pagina inicial da aplicacao
+		Quando clicar sobre a lupa
+		E enviar um texto de busca
+		E selecionar um dos produtos obtidos como resultado
+		Entao o produto aberto deve ser correspondente ao que recebeu o clique
+	
+		Cenario: Busca pela lupa invalida
+		Dado que esteja na pagina inicial da aplicacao
+		Quando clicar sobre produtos populares
+		E obter um print do produto que receber· o clique 
+		E enviar o texto de busca com o nome do produto
+		Entao a busca nao retorna nenhum resultado 
+
+	
