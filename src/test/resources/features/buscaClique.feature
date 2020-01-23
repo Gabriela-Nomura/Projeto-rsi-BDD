@@ -17,5 +17,5 @@ Cenario: Busca por clique Invalida
 		Quando eu clicar sobre o link de produto populares
 		E tirar um print
 		E selecionar o produto 
-		E adicionar no carrinho
+		E adicionar um item ao carrinho
 		Entao o produto aberto sera diferente do produto selecionado

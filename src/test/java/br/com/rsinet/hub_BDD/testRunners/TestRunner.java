@@ -8,8 +8,8 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources",
 glue = { "br.com.rsinet.hub_BDD.stepDefinitions" },
-//tags = {"@CadastroValido", "@CadastroInvalido"},
-plugin = {		"pretty", "html:target/report.html", 
+tags = {"@CadastroValido", "@CadastroInvalido"},
+plugin = {"pretty", "html:target/report.html", 
 		"json:target/report.json" },
 monochrome = true)
 

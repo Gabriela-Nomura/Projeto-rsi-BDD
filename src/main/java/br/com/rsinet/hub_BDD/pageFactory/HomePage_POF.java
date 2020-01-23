@@ -98,13 +98,13 @@ public class HomePage_POF {
 	}
 
 	public void clickOn_PopularProdutos() throws InterruptedException {
-//		WebDriverWait wait = new WebDriverWait(driver, 5);
-//		wait.until(ExpectedConditions.elementToBeClickable(popularProdutos));
-//		popularProdutos.sendKeys(Keys.ENTER);
-
-		 Actions acao = new Actions(driver);
-		 acao.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
-		 Thread.sleep(10000);
+		WebDriverWait wait = new WebDriverWait(driver, 5);
+		wait.until(ExpectedConditions.elementToBeClickable(popularProdutos));
+		popularProdutos.sendKeys(Keys.ENTER);
+//
+//		 Actions acao = new Actions(driver);
+//		 acao.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
+//		 Thread.sleep(10000);
 	}
 
 	public void takePrint() throws Exception {

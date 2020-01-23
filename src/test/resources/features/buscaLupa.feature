@@ -13,7 +13,7 @@ Testa o resultado obtido atraves da busca pelo campo na tela inicial
 	
 		Cenario: Busca pela lupa invalida
 		Dado que esteja na pagina inicial da aplicacao
-		Quando clicar sobre produtos populares
+		Quando eu clicar sobre o link de produto populares
 		E obter um print do produto que receberá o clique 
 		E enviar o texto de busca com o nome do produto
 		Entao a busca nao retorna nenhum resultado 
