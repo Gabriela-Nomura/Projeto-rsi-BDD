@@ -7,7 +7,7 @@ import cucumber.api.java.en.And;
 
 public class CadastroPage_steps {
 	/**
-	 * Função: Executar as ações referentes nas páginas de cadastro aplicação
+	 * Funï¿½ï¿½o: Executar as aï¿½ï¿½es referentes nas pï¿½ginas de cadastro aplicaï¿½ï¿½o
 	 **/
 
 	PageObjectManager pageObjectManager;
@@ -23,7 +23,7 @@ public class CadastroPage_steps {
 	//Quando alterar nesse campo sera necessario alterar tambem no metodo   logadoNomeUser() na classe HomePage_POF
 	@And("^inserir um nome de usuario valido$")
 	public void userName() throws Exception {
-		cadastraPage.sendUserName(7);
+		cadastraPage.sendUserName(3);
 	}
 	//Insere o email obtido do excel no respectivo campo 
 	@And("^inserir email valido$")
@@ -35,7 +35,7 @@ public class CadastroPage_steps {
 	public void userSenha() throws Exception {
 		cadastraPage.sendUserSenha();
 	}
-	//Insere a confirmação de senha obtida do excel no respectivo campo 
+	//Insere a confirmaï¿½ï¿½o de senha obtida do excel no respectivo campo 
 	@And("^inserir contra senha valida$")
 	public void userContraSenha() throws Exception {
 		cadastraPage.sendUserSenhaConfirmacao();
@@ -81,7 +81,7 @@ public class CadastroPage_steps {
 	public void userCEP() throws Exception {
 		cadastraPage.sendUserCep();
 	}
-//Aceitar os termos de aceitação e clica no botao de registrar usuario
+//Aceitar os termos de aceitaï¿½ï¿½o e clica no botao de registrar usuario
 	@And("^aceitar os termos de aceitacao e clicar no registro$")
 	public void aceitaTermos() {
 		cadastraPage.aceitaTermos();

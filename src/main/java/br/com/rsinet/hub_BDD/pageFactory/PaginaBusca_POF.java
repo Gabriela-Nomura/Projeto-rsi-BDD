@@ -1,5 +1,7 @@
 package br.com.rsinet.hub_BDD.pageFactory;
 
+import java.util.concurrent.TimeUnit;
+
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,8 +10,6 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import br.com.rsinet.hub_BDD.utils.Print;
 
 public class PaginaBusca_POF {
 
@@ -37,19 +37,13 @@ public class PaginaBusca_POF {
 
 	public void clickOn_Produto() {
 		WebDriverWait wait = new WebDriverWait(driver, 15);
-		
-
 		wait.until(ExpectedConditions.elementToBeClickable(produto));
-
 		produto.click();
 	}
 
 	public void addOn_carrinho() {
-
 		WebDriverWait wait = new WebDriverWait(driver, 20);
-
 		wait.until(ExpectedConditions.elementToBeClickable(carrinho));
-
 		carrinho.click();
 	}
 
@@ -63,21 +57,28 @@ public class PaginaBusca_POF {
 		WebDriverWait wait = new WebDriverWait(driver, 15);
 		wait.until(ExpectedConditions.elementToBeClickable(selecaoProduto));
 		selecaoProduto.click();
-		
-	}
 
+	}
+	public void buscaLupaFalha() throws Exception {
+		Assert.assertTrue("Teste com falha", driver.getPageSource().contains("No results for "));
+	}
 	public void buscaLupaAssert() throws Exception {
 		WebDriverWait wait = new WebDriverWait(driver, 15);
 		wait.until(ExpectedConditions.elementToBeClickable(elemento));
 
 		Assert.assertTrue(elemento != null);
-		Print.takeSnapShot("TesteBuscaCliqueValido", driver);
 //		Assert.assertTrue(driver.getPageSource().contains("ORDER SUMMARY"));
+	}
+
+	public void buscaCliqueSucesso() throws Exception {
+		boolean condition = driver.getPageSource().contains("HP ELITEPAD 1000 G2 TABLET");
+		Assert.assertTrue("Busca realizada com sucesso", condition);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
 	public void buscaLupaAssertFail() throws Exception {
 		Assert.assertTrue(driver.getPageSource().contains("HP CHROMEBOOK 14 G1(ES)"));
 
-		Print.takeSnapShot("TesteBuscaCliquecomfalha", driver);
+
 	}
 }

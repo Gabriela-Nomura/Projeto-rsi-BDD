@@ -2,7 +2,6 @@ package br.com.rsinet.hub_BDD.pageFactory;
 
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -16,12 +15,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import br.com.rsinet.hub_BDD.managers.FileReaderManager;
 import br.com.rsinet.hub_BDD.utils.MassaDeDados;
-import br.com.rsinet.hub_BDD.utils.Print;
 import dataProvider.ConfigFileReader;
 
 public class HomePage_POF {
 
-	static Logger Log = Logger.getLogger("Fabrica de objetos - P�gina inicial");
 	final WebDriver driver;
 	ConfigFileReader configFileReader;
 
@@ -70,20 +67,21 @@ public class HomePage_POF {
 
 		minhaConta.sendKeys(Keys.ENTER);
 	}
+
 //
 	public void novaConta() throws InterruptedException {
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.elementToBeClickable(novaConta));
 
 		novaConta.sendKeys(Keys.ENTER);
-//		Thread.sleep(30000);
+		Thread.sleep(3000);
 	}
 
 	public boolean logadoNomeUser() throws Exception {
 
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 15);
-			wait.until(ExpectedConditions.textToBePresentInElement(userText, MassaDeDados.userName(7)));
+			wait.until(ExpectedConditions.textToBePresentInElement(userText, MassaDeDados.userName(3)));
 		} catch (Exception e) {
 
 			return userText.isDisplayed();
@@ -96,21 +94,6 @@ public class HomePage_POF {
 		wait.until(ExpectedConditions.elementToBeClickable(HeadPhones));
 		driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
 		HeadPhones.click();
-	}
-
-	public void clickOn_PopularProdutos() throws InterruptedException {
-		WebDriverWait wait = new WebDriverWait(driver, 5);
-		wait.until(ExpectedConditions.elementToBeClickable(popularProdutos));
-		popularProdutos.sendKeys(Keys.ENTER);
-//
-//		 Actions acao = new Actions(driver);
-//		 acao.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
-//		 Thread.sleep(10000);
-	}
-
-	public void takePrint() throws Exception {
-		driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
-		Print.takeSnapShot("TesteBuscaCliqueInvalido-MostraProduto", driver);
 	}
 
 	public void clickOn_produtos() {
@@ -156,7 +139,6 @@ public class HomePage_POF {
 	public void take_Print() throws Exception {
 		WebDriverWait wait = new WebDriverWait(driver, 15);
 		wait.until(ExpectedConditions.visibilityOf(produto));
-		Print.takeSnapShot("TesteBuscaLupaInvalido-MostraProduto", driver);
 
 	}
 }

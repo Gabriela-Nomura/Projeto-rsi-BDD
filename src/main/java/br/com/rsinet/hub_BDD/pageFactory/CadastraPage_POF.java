@@ -2,7 +2,6 @@ package br.com.rsinet.hub_BDD.pageFactory;
 
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,7 +16,6 @@ import br.com.rsinet.hub_BDD.utils.MassaDeDados;
 public class CadastraPage_POF {
 
 	final WebDriver driver;
-	Logger Log = Logger.getLogger("Fabrica de objetos - Cadastro");
 
 	public CadastraPage_POF(WebDriver driver) {
 		this.driver = driver;
@@ -76,84 +74,66 @@ public class CadastraPage_POF {
 	
 	public String sendUserName(int i ) throws Exception {
 		nomeUsuario.sendKeys(MassaDeDados.userName(i));
-		Log.info("Insere o nome de usuario");
 		return MassaDeDados.userName(i);
 	}
 
 	public void sendUserEmail() throws Exception {
 		emailUsuario.sendKeys(MassaDeDados.userEmail());
-		Log.info("Insere o email do usuario");
 	}
 
 	public void sendUserSenha() throws Exception {
 		senhaUsuario.sendKeys(MassaDeDados.userSenha());
-		Log.info("Insere a senha do usuario");
 	}
 
 	public void sendUserSenhaConfirmacao() throws Exception {
 		confirmacaoSenhaUsuario.sendKeys(MassaDeDados.userSenhaConfirmacao());
-		Log.info("Insere a confirmacao de senha do usuario");
 	}
 
 	public void sendUserSPrimeiroNome() throws Exception {
 		primeiroNome.sendKeys(MassaDeDados.userPrimeiroNome());
-		Log.info("Insere o primeiro nome do usuario");
 	}
 
 	public void sendUserUltimoNome() throws Exception {
 		ultimoNome.sendKeys(MassaDeDados.userUltimoNome());
-		Log.info("Insere o telefone do usuario");
 	}
 
 	public void sendUserTelefone() throws Exception {
 		telefoneUsuario.sendKeys(MassaDeDados.userTelefone());
-		Log.info("Insere o telefone do usuario");
 	}
 
 	public void clickOn_pais() {
 		paisUsuario.click();
-		Log.info("Seleciona a lista de paises");
 	}
 
 	public void seleciona_pais() {
 		Select paisBox = new Select(CadastraPage_POF.paisUsuario);
-		Log.info("Instancia um objeto select para manipulacao da lista");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		Log.info("Driver recebeu um comando de espera implicito por 10 segundos");
 		paisBox.selectByVisibleText("Brazil");
-		Log.info("O pa�s Brazil foi selecionado");
 	}
 
 	public void sendUserCidade() throws Exception {
 		cidadeUsuario.sendKeys(MassaDeDados.userCidade());
-		Log.info("Insere a cidade do usu�rio");
 	}
 
 	public void sendUserEndereco() throws Exception {
 		enderecoUsuario.sendKeys(MassaDeDados.userEndereco());
-		Log.info("Insere o endere�o do usu�rio");
-		
 	}
 	
 	public void sendUserEstado() throws Exception {
 		estadoUsuario.sendKeys(MassaDeDados.userEstado());
-		Log.info("Insere o estado do usu�rio");
 	}
 	public void sendUserCep() throws Exception {
 	cepUsuario.sendKeys(MassaDeDados.userCep());
-	Log.info("Insere o CEP do usu�rio");
 	}
 	public void aceitaTermos() {
 	WebDriverWait wait = new WebDriverWait(driver, 15);
 	wait.until(ExpectedConditions.elementToBeClickable(aceitaTermos));
 		aceitaTermos.click();
-	Log.info("A opcao de aceitacao dos termos de privacidade foi selecionada");
 	}
 	public void registaUser() {
 		WebDriverWait wait = new WebDriverWait(driver, 15);
 		wait.until(ExpectedConditions.elementToBeClickable(registraUsuario));
 		registraUsuario.click();
-		Log.info("O link para registrar um novo usu�rio recebeu um clique");
 		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
 	}
 	

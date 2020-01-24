@@ -16,8 +16,6 @@ Cenario: Busca por clique com sucesso
 @BuscaCliqueFalha
 Cenario: Busca por clique Invalida
 		Dado que esteja na pagina inicial da aplicacao
-		Quando eu clicar sobre o link de produto populares
-		E tirar um print
-		E selecionar o produto 
+		Quando selecionar o produto 
 		E adicionar um item ao carrinho
 		Entao o produto aberto sera diferente do produto selecionado

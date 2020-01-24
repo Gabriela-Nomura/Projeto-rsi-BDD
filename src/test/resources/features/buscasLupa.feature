@@ -14,8 +14,7 @@ Testa o resultado obtido atraves da busca pelo campo na tela inicial
 	@BuscaLupaFalha
 		Cenario: Busca pela lupa invalida
 		Dado que esteja na pagina inicial da aplicacao
-		Quando eu clicar sobre o link de produto populares
-		E obter um print do produto que receberá o clique 
+		Quando clicar sobre a lupa
 		E enviar o texto de busca com o nome do produto
 		Entao a busca nao retorna nenhum resultado 
 

@@ -1,20 +1,16 @@
 package br.com.rsinet.hub_BDD.steps;
 
-import java.util.concurrent.TimeUnit;
-
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
 import br.com.rsinet.hub_BDD.cucumber.TestContext;
 import br.com.rsinet.hub_BDD.managers.PageObjectManager;
 import br.com.rsinet.hub_BDD.pageFactory.PaginaBusca_POF;
-import br.com.rsinet.hub_BDD.utils.Print;
 import cucumber.api.java.pt.E;
 import cucumber.api.java.pt.Entao;
 
 public class BuscaPage_steps {
 	/**
-	 * Função: Executar as ações referentes nas páginas de busca aplicação
+	 * Funï¿½ï¿½o: Executar as aï¿½ï¿½es referentes nas pï¿½ginas de busca aplicaï¿½ï¿½o
 	 **/
 
 	WebDriver driver;
@@ -22,7 +18,8 @@ public class BuscaPage_steps {
 	PageObjectManager pageObjectManager;
 	TestContext testContext;
 
-	// Set do construtor que permite a instancia do controlador de construtores de objetos
+	// Set do construtor que permite a instancia do controlador de construtores de
+	// objetos
 	public BuscaPage_steps(TestContext testContext) {
 		this.testContext = testContext;
 		buscaPage = testContext.getPageObjectManager().getBuscaPage();
@@ -34,12 +31,11 @@ public class BuscaPage_steps {
 		buscaPage.seleciona();
 	}
 
-//Testa se o produto que foi aberto após o clique, corresponde ao que foi clicado, obtem screenshot 
+//Testa se o produto que foi aberto apï¿½s o clique, corresponde ao que foi clicado, obtem screenshot 
 	@Entao("^o produto aberto deve ser correspondente ao que recebeu o clique$")
 	public void testeBuscaValido() throws Exception {
-		Assert.assertTrue("Busca realizada com sucesso", driver.getPageSource().contains("HP ELITEPAD 1000 G2 TABLET"));
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		Print.takeSnapShot("TesteBuscaLupaSucesso", driver);
+		buscaPage.buscaCliqueSucesso();
+
 	}
 
 //Seleciona um produto obtido como resultado da busca por clique
@@ -54,7 +50,7 @@ public class BuscaPage_steps {
 		buscaPage.addOn_carrinho();
 	}
 
-//Seleciona a opção de checkout 
+//Seleciona a opï¿½ï¿½o de checkout 
 	@E("^clicar no checkout$")
 	public void clickOnCheckOut() {
 		buscaPage.clickOn_checkOut();
@@ -69,9 +65,9 @@ public class BuscaPage_steps {
 //Testa se o produto buscado foi encontrado
 	@Entao("^a busca nao retorna nenhum resultado$")
 	public void testeBuscaInvalido() throws Exception {
-		Assert.assertTrue("Teste com falha", driver.getPageSource().contains("No results for "));
-		Print.takeSnapShot("TesteBuscaLupaFalha", driver);
+	buscaPage.buscaLupaFalha();
 	}
+
 //Testa se o produto retornado pela busca atraves lupa corresponde ao texto 
 	@Entao("^o produto aberto sera diferente do produto selecionado$")
 	public void testaBuscaInvalida() throws Exception {

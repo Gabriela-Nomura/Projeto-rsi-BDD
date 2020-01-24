@@ -8,7 +8,7 @@ import java.util.Properties;
 
 public class ConfigFileReader {
 	private Properties properties;
-	 private final String propertyFilePath= "configs//configuracoes.properties";
+	 private final String propertyFilePath= "configs/configuracoes.properties";
 	 
 	 //metodo de leitor de arquivo
 	 public ConfigFileReader(){
@@ -44,7 +44,7 @@ public class ConfigFileReader {
 	 public String getApplicationUrl() {
 	 String url = properties.getProperty("url");
 	 if(url != null) return url;
-	 else throw new RuntimeException("A url não foi especificada no arquivo de configuracoes");
+	 else throw new RuntimeException("A url nï¿½o foi especificada no arquivo de configuracoes");
 	 }
 	 public String getReportConfigPath(){
 			String reportConfigPath = properties.getProperty("reportConfigPath");
