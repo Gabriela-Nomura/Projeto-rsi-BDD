@@ -1,4 +1,4 @@
-package br.com.rsinet.hub_BDD.stepDefinitions;
+package br.com.rsinet.hub_BDD.steps;
 
 import br.com.rsinet.hub_BDD.cucumber.TestContext;
 import br.com.rsinet.hub_BDD.managers.PageObjectManager;
@@ -20,9 +20,10 @@ public class CadastroPage_steps {
 		cadastraPage = testContext.getPageObjectManager().getcadastraPage();
 	}
 //Insere o nome obtido do excel no respectivo campo 
+	//Quando alterar nesse campo sera necessario alterar tambem no metodo   logadoNomeUser() na classe HomePage_POF
 	@And("^inserir um nome de usuario valido$")
 	public void userName() throws Exception {
-		cadastraPage.sendUserName(4);
+		cadastraPage.sendUserName(7);
 	}
 	//Insere o email obtido do excel no respectivo campo 
 	@And("^inserir email valido$")

@@ -3,21 +3,21 @@ package br.com.rsinet.hub_BDD.managers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import br.com.rsinet.hub_BDD.utils.ConfigExcel;
-import br.com.rsinet.hub_BDD.utils.MassaDeDados;
+import dataProvider.ConfigFileReader;
+
 
 public class WebDriverManager {
 	private static WebDriver driver;
 
 	/**
-	 * Classe de configura��o do driver a executar os testes. Inicializa��o
-	 * do navegador, defini��o da url, arquivo do excel e arquivo de registros
-	 * de log.
+	 * Classe de configuracao do driver a executar os testes. Inicializacao do
+	 * navegador, definicao da url, arquivo do excel e arquivo de registros de log.
 	 */
-
+	ConfigFileReader configFileReader;
 	public WebDriver getDriver() throws Exception {
 		if (driver == null) {
-			System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
+			ConfigFileReader configFileReader= new ConfigFileReader();
+			System.setProperty("webdriver.chrome.driver", configFileReader.getDriverPath());
 			driver = new ChromeDriver();
 
 			driver.manage().window().maximize();
@@ -25,15 +25,6 @@ public class WebDriverManager {
 		}
 
 		return driver;
-	}
-
-	public static void configExcelCadastra() throws Exception {
-		ConfigExcel.setExcelFile(MassaDeDados.Path_TestData, "TesteCadastro");
-
-	}
-
-	public static void configExcelBusca() throws Exception {
-		ConfigExcel.setExcelFile(MassaDeDados.Path_TestData, "TesteBusca");
 	}
 
 	public WebDriver encerra() {

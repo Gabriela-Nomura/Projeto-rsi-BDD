@@ -29,7 +29,7 @@ Cenario: Cadastro de um novo usuario com sucesso
 		E aceitar os termos de aceitacao e clicar no registro
 		Entao o novo usuario deve ser logado e direcionado a homepage com nome de usuario sendo exibido
 		
-@CadastroInvalido	
+@CadastroInvalido
 Cenario: Cadastro de um novo usuario com falha
 		
 		E selecionar a opcao criar nova conta

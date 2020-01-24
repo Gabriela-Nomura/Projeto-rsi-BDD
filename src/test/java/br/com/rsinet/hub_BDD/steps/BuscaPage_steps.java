@@ -1,4 +1,4 @@
-package br.com.rsinet.hub_BDD.stepDefinitions;
+package br.com.rsinet.hub_BDD.steps;
 
 import java.util.concurrent.TimeUnit;
 

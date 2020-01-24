@@ -2,12 +2,16 @@ package br.com.rsinet.hub_BDD.utils;
 
 public class MassaDeDados {
 	/**
-	 * Classe para fixa��o de atributos MassaDeDados.
+	 * Classe para leitura de dados do Excel
 	 */
-	public static String URL = "https://www.advantageonlineshopping.com/";
+
 
 	public static final String Path_TestData = "C://Users//gabriela.nomura//Documents//automacao//testData.xlsx";
 
+	public static void configExcelCadastra() throws Exception {
+		ConfigExcel.setExcelFile(Path_TestData, "TesteCadastro");
+
+	}
 	public static final String userName(int i ) throws Exception {
 		return ConfigExcel.getCellData(i, 0);
 	}
@@ -52,9 +56,9 @@ public class MassaDeDados {
 	}
 	
 	public static final String buscaLupa() throws Exception {
-	return ConfigExcel.getCellData(1, 0);
+	return ConfigExcel.getCellData(11, 0);
 	}
 	public static final String buscaLupaFalha() throws Exception {
-		return ConfigExcel.getCellData(2, 0);
+		return ConfigExcel.getCellData(12, 0);
 		}
 }

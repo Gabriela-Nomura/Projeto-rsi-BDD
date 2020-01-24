@@ -1,7 +1,6 @@
-package br.com.rsinet.hub_BDD.stepDefinitions;
+package br.com.rsinet.hub_BDD.steps;
 
 import org.junit.Assert;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 import br.com.rsinet.hub_BDD.cucumber.TestContext;
@@ -32,6 +31,7 @@ public class HomePage_steps {
 	@Dado("^que esteja na pagina inicial da aplicacao$")
 	public void configInicial() throws Throwable {
 		homePage.navegaInicio();
+//		 driver.manage().timeouts().implicitlyWait(FileReaderManager.getInstance().getConfigReader().getImplicitlyWait(), TimeUnit.SECONDS);
 	}
 
 //Clica na categoria de produtos Headphones
@@ -109,8 +109,8 @@ public class HomePage_steps {
 	public void testeCadastroInvalido() throws Exception {
 		Assert.assertFalse(homePage.logadoNomeUser());
 
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		jse.executeScript("scrollBy(0,150)", "");
+//		JavascriptExecutor jse = (JavascriptExecutor) driver;
+//		jse.executeScript("scrollBy(0,150)", "");
 
 		Print.takeSnapShot("TesteCadastroInvalido", driver);
 	}

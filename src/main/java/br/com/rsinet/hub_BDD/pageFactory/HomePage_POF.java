@@ -8,24 +8,26 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import br.com.rsinet.hub_BDD.managers.WebDriverManager;
-import br.com.rsinet.hub_BDD.utils.Print;
+import br.com.rsinet.hub_BDD.managers.FileReaderManager;
 import br.com.rsinet.hub_BDD.utils.MassaDeDados;
+import br.com.rsinet.hub_BDD.utils.Print;
+import dataProvider.ConfigFileReader;
 
 public class HomePage_POF {
 
 	static Logger Log = Logger.getLogger("Fabrica de objetos - P�gina inicial");
 	final WebDriver driver;
+	ConfigFileReader configFileReader;
 
 	public HomePage_POF(WebDriver driver) {
 		this.driver = driver;
+		configFileReader = new ConfigFileReader();
 		PageFactory.initElements(driver, this);
 	}
 
@@ -37,7 +39,7 @@ public class HomePage_POF {
 
 	@FindBy(how = How.ID, using = "menuUserLink")
 	private WebElement minhaConta;
-										
+
 	@FindBy(how = How.XPATH, using = "/html/body/login-modal/div/div/div[3]/a[2]")
 	private WebElement novaConta;
 
@@ -55,9 +57,10 @@ public class HomePage_POF {
 	@FindBy(how = How.ID, using = "autoComplete")
 	private WebElement buscaBox;
 
-	public void navegaInicio() {
+	public void navegaInicio() throws Exception {
 
-		driver.get(MassaDeDados.URL);
+		driver.get(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
+
 	}
 
 	public void minhaConta() throws InterruptedException {
@@ -67,22 +70,20 @@ public class HomePage_POF {
 
 		minhaConta.sendKeys(Keys.ENTER);
 	}
-
+//
 	public void novaConta() throws InterruptedException {
-
-//		driver.findElement(By.xpath("/html/body/login-modal/div/div/div[3]/a[2]")).click();
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.elementToBeClickable(novaConta));
 
 		novaConta.sendKeys(Keys.ENTER);
-		Thread.sleep(30000);
+//		Thread.sleep(30000);
 	}
 
 	public boolean logadoNomeUser() throws Exception {
 
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 15);
-			wait.until(ExpectedConditions.textToBePresentInElement(userText, MassaDeDados.userName(1)));
+			wait.until(ExpectedConditions.textToBePresentInElement(userText, MassaDeDados.userName(7)));
 		} catch (Exception e) {
 
 			return userText.isDisplayed();
@@ -129,7 +130,6 @@ public class HomePage_POF {
 	public void sendText_busca() throws Exception {
 		WebDriverWait wait = new WebDriverWait(driver, 15);
 		wait.until(ExpectedConditions.elementToBeClickable(buscaBox));
-		WebDriverManager.configExcelBusca();
 		buscaBox.sendKeys(MassaDeDados.buscaLupa());
 		buscaBox.sendKeys(Keys.ENTER);
 	}
@@ -137,8 +137,6 @@ public class HomePage_POF {
 	public void sendText_buscaFalha() throws Exception {
 		WebDriverWait wait = new WebDriverWait(driver, 15);
 		wait.until(ExpectedConditions.elementToBeClickable(buscaBox));
-
-		WebDriverManager.configExcelBusca();
 
 		buscaBox.sendKeys(MassaDeDados.buscaLupaFalha());
 		buscaBox.sendKeys(Keys.ENTER);
