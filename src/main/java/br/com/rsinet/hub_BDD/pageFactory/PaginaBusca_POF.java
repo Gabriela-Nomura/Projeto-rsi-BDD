@@ -12,7 +12,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PaginaBusca_POF {
-
+	/**
+	 * Classe de manipulacao de webElements das paginas de buscas
+	 */
 	final WebDriver driver;
 
 	public PaginaBusca_POF(WebDriver driver) {

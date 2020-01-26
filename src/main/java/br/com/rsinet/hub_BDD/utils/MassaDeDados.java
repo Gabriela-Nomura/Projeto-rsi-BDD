@@ -9,7 +9,7 @@ public class MassaDeDados {
 	public static final String Path_TestData = "C://Users//gabriela.nomura//Documents//automacao//testData.xlsx";
 
 	public static void configExcelCadastra() throws Exception {
-		ConfigExcel.setExcelFile(Path_TestData, "TesteCadastro");
+		ConfigExcel.setExcelFile(Path_TestData, "Teste");
 
 	}
 	public static final String userName(int i ) throws Exception {

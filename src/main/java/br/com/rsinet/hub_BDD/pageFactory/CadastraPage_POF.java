@@ -14,7 +14,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import br.com.rsinet.hub_BDD.utils.MassaDeDados;
 
 public class CadastraPage_POF {
-
+	/**
+	 * Classe de manipulacao de webElements da pagina de cadastro
+	 */
 	final WebDriver driver;
 
 	public CadastraPage_POF(WebDriver driver) {
@@ -66,12 +68,14 @@ public class CadastraPage_POF {
 	@FindBy(how = How.XPATH, using = "//*[@id=\"formCover\"]/sec-view/div/input")
 	private WebElement aceitaTermos;
 
-	@FindBy(how = How.XPATH, using = "//*[@id=\"register_btnundefined\"]")
+	@FindBy(how = How.ID, using = "register_btnundefined")
 	private WebElement registraUsuario;
 
 	@FindBy(how = How.XPATH, using = "//*[@id=\"registerPage\"]/article/sec-form/div[2]/label[1]/font/font")
 	private WebElement alerta;
 	
+	//metodo que obtem o valor lido do excel e insere o valor no respectivo campo
+	//o parametro i se refere a linha do excel que sera lida
 	public String sendUserName(int i ) throws Exception {
 		nomeUsuario.sendKeys(MassaDeDados.userName(i));
 		return MassaDeDados.userName(i);
@@ -131,7 +135,7 @@ public class CadastraPage_POF {
 		aceitaTermos.click();
 	}
 	public void registaUser() {
-		WebDriverWait wait = new WebDriverWait(driver, 15);
+		WebDriverWait wait = new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.elementToBeClickable(registraUsuario));
 		registraUsuario.click();
 		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);

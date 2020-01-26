@@ -18,7 +18,9 @@ import br.com.rsinet.hub_BDD.utils.MassaDeDados;
 import dataProvider.ConfigFileReader;
 
 public class HomePage_POF {
-
+	/**
+	 * Classe de manipulacao de webElements da pagina inicial da aplicacao
+	 */
 	final WebDriver driver;
 	ConfigFileReader configFileReader;
 
