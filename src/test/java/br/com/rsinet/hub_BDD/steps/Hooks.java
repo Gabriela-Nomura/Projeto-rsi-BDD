@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriverException;
 import com.cucumber.listener.Reporter;
 import com.google.common.io.Files;
 
-import br.com.rsinet.hub_BDD.cucumber.TestContext;
+import br.com.rsinet.hub_BDD.cucumber.ContextoDeTeste;
 import br.com.rsinet.hub_BDD.managers.PageObjectManager;
 import br.com.rsinet.hub_BDD.managers.WebDriverManager;
 import br.com.rsinet.hub_BDD.utils.MassaDeDados;
@@ -22,23 +22,24 @@ public class Hooks {
 
 	PageObjectManager pageObjectManager;
 	WebDriverManager webDriverManager;
-	TestContext testContext;
+	ContextoDeTeste contextoDeTeste;
 	WebDriver driver;
 
-	public Hooks(TestContext testContext) {
-		this.testContext = testContext;
+	public Hooks(ContextoDeTeste contextoDeTeste) {
+		this.contextoDeTeste = contextoDeTeste;
 	}
 
 	@Before
 	public void initConfig(Scenario scenario) throws Exception {
-		driver = testContext.getWebDriverManager().getDriver();
+		driver = contextoDeTeste.getWebDriverManager().getDriver();
 		MassaDeDados.configExcelCadastra();
-
+		
 	}
 
 	@After(order=0)
 	public void quitConfig() throws Exception {
-		driver = testContext.getWebDriverManager().encerra();
+		driver = contextoDeTeste.getWebDriverManager().encerra();
+		Reporter.addStepLog ("O teste foi finalizado ");
 	}
 	@After(order=1)
 	 public void afterScenario(Scenario scenario) throws WebDriverException, Exception {
@@ -46,7 +47,7 @@ public class Hooks {
 		 String screenshotName = scenario.getName().replaceAll(" ", "_");
 		
 		 //This takes a screenshot from the driver at save it to the specified location
-		 File sourcePath = ((TakesScreenshot) testContext.getWebDriverManager().getDriver()).getScreenshotAs(OutputType.FILE);
+		 File sourcePath = ((TakesScreenshot) contextoDeTeste.getWebDriverManager().getDriver()).getScreenshotAs(OutputType.FILE);
 		 
 		 //Building up the destination path for the screenshot to save
 		 //Also make sure to create a folder 'screenshots' with in the cucumber-report folder
@@ -57,10 +58,10 @@ public class Hooks {
 		 
 		 //This attach the specified screenshot to the test
 		 Reporter.addScreenCaptureFromPath(destinationPath.toString());
+		 Reporter.addStepLog ("Print obtido com sucesso ");
 		 }
 		 }
 		 
 
-//			 Reporter.setSystemInfo("Nome de usuario: ", System.getProperty("user.name"));
 
 

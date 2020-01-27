@@ -30,7 +30,6 @@ public class WebDriverManager {
 	public WebDriver encerra() {
 		if (driver != null) {
 			driver.close();
-//			driver.quit();
 		}
 		return driver = null;
 	}

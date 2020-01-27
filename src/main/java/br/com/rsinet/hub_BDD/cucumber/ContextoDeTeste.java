@@ -3,14 +3,16 @@ package br.com.rsinet.hub_BDD.cucumber;
 import br.com.rsinet.hub_BDD.managers.PageObjectManager;
 import br.com.rsinet.hub_BDD.managers.WebDriverManager;
 
-public class TestContext {
+public class ContextoDeTeste {
 
 	private WebDriverManager webDriverManager;
 	private PageObjectManager pageObjectManager;
-
-	public TestContext() throws Exception {
+	 ContextoDeCenario  contextoCenario;
+	 
+	public ContextoDeTeste() throws Exception {
 		webDriverManager = new WebDriverManager();
 		pageObjectManager = new PageObjectManager(webDriverManager.getDriver());
+		contextoCenario = new ContextoDeCenario();
 	}
 
 	public WebDriverManager getWebDriverManager() throws Exception {
@@ -20,5 +22,7 @@ public class TestContext {
 	public PageObjectManager getPageObjectManager() {
 		return pageObjectManager;
 	}
-
+	 public ContextoDeCenario getContextoCenario() {
+		 return contextoCenario;
+		 }
 }

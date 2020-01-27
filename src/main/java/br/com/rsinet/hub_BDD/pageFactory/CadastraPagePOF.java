@@ -13,13 +13,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import br.com.rsinet.hub_BDD.utils.MassaDeDados;
 
-public class CadastraPage_POF {
+public class CadastraPagePOF {
 	/**
 	 * Classe de manipulacao de webElements da pagina de cadastro
 	 */
 	final WebDriver driver;
 
-	public CadastraPage_POF(WebDriver driver) {
+	public CadastraPagePOF(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
@@ -110,7 +110,7 @@ public class CadastraPage_POF {
 	}
 
 	public void seleciona_pais() {
-		Select paisBox = new Select(CadastraPage_POF.paisUsuario);
+		Select paisBox = new Select(CadastraPagePOF.paisUsuario);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		paisBox.selectByVisibleText("Brazil");
 	}

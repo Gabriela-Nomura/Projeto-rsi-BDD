@@ -17,14 +17,14 @@ import br.com.rsinet.hub_BDD.managers.FileReaderManager;
 import br.com.rsinet.hub_BDD.utils.MassaDeDados;
 import dataProvider.ConfigFileReader;
 
-public class HomePage_POF {
+public class HomePagePOF {
 	/**
 	 * Classe de manipulacao de webElements da pagina inicial da aplicacao
 	 */
 	final WebDriver driver;
 	ConfigFileReader configFileReader;
 
-	public HomePage_POF(WebDriver driver) {
+	public HomePagePOF(WebDriver driver) {
 		this.driver = driver;
 		configFileReader = new ConfigFileReader();
 		PageFactory.initElements(driver, this);
@@ -50,8 +50,10 @@ public class HomePage_POF {
 
 	@FindBy(how = How.XPATH, using = "//*[@id=\"menuUserLink\"]/span")
 	private WebElement userText;
+	@FindBy(how = How.XPATH, using = "//*[@id=\"popular_items\"]/div/div[2]/p/font/font")
+	private WebElement produtoNome;
 
-	CadastraPage_POF CadastraPage;
+	CadastraPagePOF CadastraPagePOF;
 
 	@FindBy(how = How.ID, using = "autoComplete")
 	private WebElement buscaBox;
@@ -62,6 +64,10 @@ public class HomePage_POF {
 
 	}
 
+	public String buscaLupaFalha() throws Exception {
+		return produtoNome.getText();
+
+	}
 	public void minhaConta() throws InterruptedException {
 		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, 30);

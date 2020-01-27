@@ -2,40 +2,40 @@ package br.com.rsinet.hub_BDD.managers;
 
 import org.openqa.selenium.WebDriver;
 
-import br.com.rsinet.hub_BDD.pageFactory.CadastraPage_POF;
-import br.com.rsinet.hub_BDD.pageFactory.HomePage_POF;
-import br.com.rsinet.hub_BDD.pageFactory.PaginaBusca_POF;
+import br.com.rsinet.hub_BDD.pageFactory.CadastraPagePOF;
+import br.com.rsinet.hub_BDD.pageFactory.HomePagePOF;
+import br.com.rsinet.hub_BDD.pageFactory.PaginaBuscaPOF;
 
 public class PageObjectManager {
 
 	private WebDriver driver;
 
-	private CadastraPage_POF cadastraPage;
+	private CadastraPagePOF cadastraPagePOF;
 
-	private PaginaBusca_POF buscaPage;
+	private PaginaBuscaPOF buscaPage;
 
-	private HomePage_POF homePage;
+	private HomePagePOF homePagePOF;
 
 	public PageObjectManager(WebDriver driver) {	 
 		 this.driver = driver;
 		 
 		 }
 
-	public HomePage_POF getHomePage() {
+	public HomePagePOF getHomePage() {
 
-		return (homePage == null) ? homePage = new HomePage_POF(driver) : homePage;
-
-	}
-
-	public CadastraPage_POF getcadastraPage() {
-
-		return (cadastraPage == null) ? cadastraPage = new CadastraPage_POF(driver) : cadastraPage;
+		return (homePagePOF == null) ? homePagePOF = new HomePagePOF(driver) : homePagePOF;
 
 	}
 
-	public PaginaBusca_POF getBuscaPage() {
+	public CadastraPagePOF getcadastraPage() {
 
-		return (buscaPage == null) ? buscaPage = new PaginaBusca_POF(driver) : buscaPage;
+		return (cadastraPagePOF == null) ? cadastraPagePOF = new CadastraPagePOF(driver) : cadastraPagePOF;
+
+	}
+
+	public PaginaBuscaPOF getBuscaPage() {
+
+		return (buscaPage == null) ? buscaPage = new PaginaBuscaPOF(driver) : buscaPage;
 
 	}
 

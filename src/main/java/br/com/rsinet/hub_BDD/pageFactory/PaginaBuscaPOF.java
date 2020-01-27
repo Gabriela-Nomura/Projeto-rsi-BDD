@@ -11,13 +11,13 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class PaginaBusca_POF {
+public class PaginaBuscaPOF {
 	/**
 	 * Classe de manipulacao de webElements das paginas de buscas
 	 */
 	final WebDriver driver;
 
-	public PaginaBusca_POF(WebDriver driver) {
+	public PaginaBuscaPOF(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
@@ -36,6 +36,11 @@ public class PaginaBusca_POF {
 
 	@FindBy(how = How.XPATH, using = "//*[@id=\"userCart\"]")
 	private WebElement elemento;
+	
+	@FindBy(how = How.XPATH, using = "//*[@id=\"product\"]/td[2]")
+	private WebElement produtoAberto;
+	
+
 
 	public void clickOn_Produto() {
 		WebDriverWait wait = new WebDriverWait(driver, 15);
@@ -61,15 +66,13 @@ public class PaginaBusca_POF {
 		selecaoProduto.click();
 
 	}
-	public void buscaLupaFalha() throws Exception {
-		Assert.assertTrue("Teste com falha", driver.getPageSource().contains("No results for "));
-	}
-	public void buscaLupaAssert() throws Exception {
+	//
+
+	public WebElement buscaLupaAssert() throws Exception {
 		WebDriverWait wait = new WebDriverWait(driver, 15);
 		wait.until(ExpectedConditions.elementToBeClickable(elemento));
-
-		Assert.assertTrue(elemento != null);
-//		Assert.assertTrue(driver.getPageSource().contains("ORDER SUMMARY"));
+		return elemento;
+		
 	}
 
 	public void buscaCliqueSucesso() throws Exception {
@@ -77,10 +80,11 @@ public class PaginaBusca_POF {
 		Assert.assertTrue("Busca realizada com sucesso", condition);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
-
-	public void buscaLupaAssertFail() throws Exception {
-		Assert.assertTrue(driver.getPageSource().contains("HP CHROMEBOOK 14 G1(ES)"));
-
-
+	public String produtoAberto() {
+		
+	return produtoAberto.getText();
+	
 	}
+	
+	
 }
