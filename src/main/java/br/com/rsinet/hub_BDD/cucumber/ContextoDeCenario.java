@@ -10,7 +10,7 @@ public class ContextoDeCenario {
 	private  Map<String, Object> scenarioContext;
 	 
     public ContextoDeCenario(){
-        scenarioContext = new HashMap<>();
+        scenarioContext = new HashMap<String, Object>();
     }
 
     public void setContext(Contexto key, Object value) {
