@@ -72,7 +72,7 @@ public class BuscaPage_steps {
 //Testa se o produto buscado foi encontrado --LUPA
 	@Entao("^a busca nao retorna nenhum resultado$")
 	public void testeBuscaInvalido() throws Exception {
-		
+		buscaPage.loadTime();
 	Assert.assertTrue(contextoDeTeste.getWebDriverManager().getDriver().getPageSource().contains("No results "));
 
 		Reporter.addStepLog("A busca não retornou nenhum resultado");

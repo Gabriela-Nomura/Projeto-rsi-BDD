@@ -2,8 +2,6 @@ package br.com.rsinet.hub_BDD.pageFactory;
 
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -69,20 +67,17 @@ public class HomePagePOF {
 
 	}
 	public void minhaConta() throws InterruptedException {
-		Thread.sleep(10000);
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.elementToBeClickable(minhaConta));
 
 		minhaConta.sendKeys(Keys.ENTER);
 	}
 
-//
 	public void novaConta() throws InterruptedException {
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.elementToBeClickable(novaConta));
 
 		novaConta.sendKeys(Keys.ENTER);
-		Thread.sleep(3000);
 	}
 
 	public boolean logadoNomeUser() throws Exception {
@@ -132,21 +127,6 @@ public class HomePagePOF {
 		buscaBox.sendKeys(MassaDeDados.buscaLupaFalha());
 		buscaBox.sendKeys(Keys.ENTER);
 
-		Thread.sleep(20000);
 	}
 
-	public void ajusta_tela() throws Exception {
-		WebDriverWait wait = new WebDriverWait(driver, 20);
-		JavascriptExecutor scroll = (JavascriptExecutor) driver;
-		scroll.executeScript("scrollBy(0,750)", "");
-
-		WebElement element = driver.findElement(By.id("details_10"));
-		wait.until(ExpectedConditions.visibilityOf(element));
-	}
-
-	public void take_Print() throws Exception {
-		WebDriverWait wait = new WebDriverWait(driver, 15);
-		wait.until(ExpectedConditions.visibilityOf(produto));
-
-	}
 }

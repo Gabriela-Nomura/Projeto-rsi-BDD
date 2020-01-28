@@ -65,7 +65,7 @@ public class CadastraPagePOF {
 	@FindBy(how = How.XPATH, using = "//*[@id=\"formCover\"]/div[3]/div[3]/sec-view/div/input")
 	private WebElement cepUsuario;
 
-	@FindBy(how = How.XPATH, using = "//*[@id=\"formCover\"]/sec-view/div/input")
+	@FindBy(how = How.NAME, using = "i_agree")
 	private WebElement aceitaTermos;
 
 	@FindBy(how = How.ID, using = "register_btnundefined")
@@ -74,12 +74,21 @@ public class CadastraPagePOF {
 	@FindBy(how = How.XPATH, using = "//*[@id=\"registerPage\"]/article/sec-form/div[2]/label[1]/font/font")
 	private WebElement alerta;
 	
+	//Metodo para aguardar que o elemento esteja disponivel para que receba a interação
+	private void waitUntil(WebElement element) {
+	
+		WebDriverWait wait = new WebDriverWait(driver, 15);
+		wait.until(ExpectedConditions.elementToBeClickable(element));}
+
 	//metodo que obtem o valor lido do excel e insere o valor no respectivo campo
 	//o parametro i se refere a linha do excel que sera lida
 	public String sendUserName(int i ) throws Exception {
+			waitUntil(nomeUsuario);
 		nomeUsuario.sendKeys(MassaDeDados.userName(i));
 		return MassaDeDados.userName(i);
 	}
+
+
 
 	public void sendUserEmail() throws Exception {
 		emailUsuario.sendKeys(MassaDeDados.userEmail());
@@ -105,7 +114,7 @@ public class CadastraPagePOF {
 		telefoneUsuario.sendKeys(MassaDeDados.userTelefone());
 	}
 
-	public void clickOn_pais() {
+	public void clickOn_pais() throws Exception {
 		paisUsuario.click();
 	}
 
@@ -130,15 +139,15 @@ public class CadastraPagePOF {
 	cepUsuario.sendKeys(MassaDeDados.userCep());
 	}
 	public void aceitaTermos() {
-	WebDriverWait wait = new WebDriverWait(driver, 15);
-	wait.until(ExpectedConditions.elementToBeClickable(aceitaTermos));
+		if(aceitaTermos.isSelected() == false) {
+		
 		aceitaTermos.click();
+		}
 	}
 	public void registaUser() {
-		WebDriverWait wait = new WebDriverWait(driver, 20);
-		wait.until(ExpectedConditions.elementToBeClickable(registraUsuario));
-		registraUsuario.click();
-		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+	waitUntil(registraUsuario);
+		registraUsuario.click();		
+		
 	}
 	
 	

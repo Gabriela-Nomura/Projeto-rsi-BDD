@@ -7,7 +7,6 @@ import org.junit.runner.RunWith;
 
 import com.cucumber.listener.Reporter;
 
-import br.com.rsinet.hub_BDD.cucumber.ContextoDeTeste;
 import br.com.rsinet.hub_BDD.managers.FileReaderManager;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
@@ -17,15 +16,11 @@ import cucumber.api.junit.Cucumber;
 glue = { "br.com.rsinet.hub_BDD.steps" }, 
 
 		plugin = { "com.cucumber.listener.ExtentCucumberFormatter:report.html" }, 
-//		tags = {"@BuscaLupaFalha"},
+		tags = {"@CadastroInvalido"},
 monochrome = true)
 
 public class TestRunner {
-	ContextoDeTeste contextoDeTeste;
 	 
-	 public TestRunner(ContextoDeTeste context) {
-	 contextoDeTeste = context;
-	 }
 	@AfterClass
 	public static void writeExtentReport() {
 

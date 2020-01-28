@@ -1,7 +1,5 @@
 package br.com.rsinet.hub_BDD.pageFactory;
 
-import java.util.concurrent.TimeUnit;
-
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -40,37 +38,40 @@ public class PaginaBuscaPOF {
 	@FindBy(how = How.XPATH, using = "//*[@id=\"product\"]/td[2]")
 	private WebElement produtoAberto;
 	
+	@FindBy(how = How.XPATH, using = "//*[@id=\"searchPage\"]/div[3]/div/label/span")
+	private WebElement noResult;
+	
+	//Metodo para aguardar que o elemento esteja disponivel para que receba a interação
+	private void waitUntil(WebElement element) {
+	
+		WebDriverWait wait = new WebDriverWait(driver, 15);
+		wait.until(ExpectedConditions.elementToBeClickable(element));}
 
 
 	public void clickOn_Produto() {
-		WebDriverWait wait = new WebDriverWait(driver, 15);
-		wait.until(ExpectedConditions.elementToBeClickable(produto));
+		waitUntil(produto);
 		produto.click();
 	}
 
 	public void addOn_carrinho() {
-		WebDriverWait wait = new WebDriverWait(driver, 20);
-		wait.until(ExpectedConditions.elementToBeClickable(carrinho));
+		waitUntil(carrinho);
 		carrinho.click();
 	}
 
 	public void clickOn_checkOut() {
-		WebDriverWait wait = new WebDriverWait(driver, 15);
-		wait.until(ExpectedConditions.elementToBeClickable(checkout));
+	waitUntil(checkout);
 		checkout.click();
 	}
 
 	public void seleciona() {
-		WebDriverWait wait = new WebDriverWait(driver, 15);
-		wait.until(ExpectedConditions.elementToBeClickable(selecaoProduto));
+	waitUntil(selecaoProduto);
 		selecaoProduto.click();
 
 	}
 	//
 
 	public WebElement buscaLupaAssert() throws Exception {
-		WebDriverWait wait = new WebDriverWait(driver, 15);
-		wait.until(ExpectedConditions.elementToBeClickable(elemento));
+	waitUntil(elemento);
 		return elemento;
 		
 	}
@@ -78,12 +79,16 @@ public class PaginaBuscaPOF {
 	public void buscaCliqueSucesso() throws Exception {
 		boolean condition = driver.getPageSource().contains("HP ELITEPAD 1000 G2 TABLET");
 		Assert.assertTrue("Busca realizada com sucesso", condition);
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
 	}
 	public String produtoAberto() {
-		
+		waitUntil(produtoAberto);
 	return produtoAberto.getText();
 	
+	}
+
+	public void loadTime() {
+		waitUntil(noResult);
 	}
 	
 	

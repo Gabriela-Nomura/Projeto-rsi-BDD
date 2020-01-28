@@ -100,9 +100,12 @@ public class CadastroPage_steps {
 	}
 
 //Aceitar os termos de aceita��o e clica no botao de registrar usuario
-	@E("^aceitar os termos de aceitacao e clicar no registro$")
+	@E("^aceitar os termos de aceitacao$")
 	public void aceitaTermos() {
 		cadastraPagePOF.aceitaTermos();
+	}
+		@E("clicar no registro$")
+	public void registra() {
 		cadastraPagePOF.registaUser();
 	}
 
