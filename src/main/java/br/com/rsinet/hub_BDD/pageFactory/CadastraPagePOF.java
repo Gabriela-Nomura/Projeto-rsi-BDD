@@ -145,7 +145,7 @@ public class CadastraPagePOF {
 		}
 	}
 	public void registaUser() {
-	waitUntil(registraUsuario);
+	
 		registraUsuario.click();		
 		
 	}
